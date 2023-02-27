@@ -1,9 +1,11 @@
 package main
 
 import (
+	"io"
 	"os"
 
 	"github.com/yoheimuta/protolint/internal/cmd"
+	"github.com/yoheimuta/protolint/internal/osutil"
 )
 
 func main() {
@@ -14,4 +16,12 @@ func main() {
 			os.Stderr,
 		),
 	))
+}
+
+func Do(
+	args []string,
+	stdout io.Writer,
+	stderr io.Writer,
+) osutil.ExitCode {
+	return cmd.Do(args, stdout, stderr)
 }
